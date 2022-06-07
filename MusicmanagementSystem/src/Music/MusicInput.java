@@ -10,10 +10,14 @@ public interface MusicInput {
 	
 	public void setMusictitle(String musictitle);
 	
+	public String getSongwriter();
+	
 	public void setSongwriter(String songwriter) throws TitleFormatException;
 	
-	public void setMusictime(String musictime);
+	public String getMusictime();
 	
+	public void setMusictime(String musictime);
+
 	public void getUserInput(Scanner input);
 	
 	public void printInfo();

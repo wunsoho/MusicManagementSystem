@@ -138,6 +138,14 @@ public class MusicManager implements Serializable {
 		}
 	}	
 	
+	public int size() {
+		return musics.size();
+	}
+	
+	public MusicInput get(int index) {
+		return (Music) musics.get(index);
+	}
+	
 	public void showEditMenu() {
 		System.out.println("---- your favorite music----");
 		System.out.println("1. Add Music");

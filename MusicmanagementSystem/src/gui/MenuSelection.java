@@ -7,33 +7,42 @@ import javax.swing.JFrame; //BorderLayout을 FlowLayout으로 바꿔줌.
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuSelection extends JFrame { //GUI를 만들기 위해 JFrame을 extends함.
+import Listeners.ButtonAddListener;
+import Listeners.ButtonViewListener;
+
+public class MenuSelection extends JPanel { 
 	
-	public MenuSelection() {
-		this.setSize(300, 300); // 프레임의 크기를 300,300으로 정의함.
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // x버튼을 누르면 창이 닫히게 함.
+	WindowFrame frame; // menuselection클래스가 WindowFrame을 가지고 있게 함. 
+	
+	public MenuSelection(WindowFrame frame) {
+		this.frame = frame;
+		
+		this.setLayout(new BorderLayout()); // 원래 FlowLayout인 JPanel을 BorderLayout으로 바꿔줌.
 		
 		JPanel panel1 = new JPanel();
-		JPanel panel2 = new JPanel(); // 두 개의 panel을 만듬.
-		JLabel label = new JLabel("Menu Selection"); // label을 하나 만듬.
+		JPanel panel2 = new JPanel(); 
+		JLabel label = new JLabel("Menu Selection"); 
 		
 		JButton button1 = new JButton("Add music");
-		JButton button2 = new JButton("View music");
+		JButton button2 = new JButton("View music"); 
 		JButton button3 = new JButton("Edit music");
 		JButton button4 = new JButton("Delete music");
-		JButton button5 = new JButton("Exit Program"); // 버튼 5개를 만들어줌.
+		JButton button5 = new JButton("Exit Program"); 
+		
+		button1.addActionListener(new ButtonAddListener(frame)); // add하기전에 ActionListener를 넣어 ButtonAddListener와 연결해줌.
+		button2.addActionListener(new ButtonViewListener(frame)); //add하기전에 ActionListener를 넣어 ButtonViewListener와 연결해줌.
 		
 		panel1.add(label);
 		panel2.add(button1);
 		panel2.add(button2);
 		panel2.add(button3);
 		panel2.add(button4);
-		panel2.add(button5); // panel에 버튼 5개를 추가함.
+		panel2.add(button5); 
 		
-        this.add(panel1, BorderLayout.NORTH); //BorderLayout을 이용해 panel1의 위치를 NORTH로 지정함.
-        this.add(panel2, BorderLayout.CENTER); //BorderLayout을 이용해 panel2의 위치를 CENTER로 지정함.
+        this.add(panel1, BorderLayout.NORTH);
+        this.add(panel2, BorderLayout.CENTER); 
         
-		this.setVisible(true); //프레임이 보일 수 있도록 함.
+		
 	}
 
 }

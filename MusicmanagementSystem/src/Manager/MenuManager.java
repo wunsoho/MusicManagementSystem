@@ -8,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager{
@@ -21,6 +23,8 @@ public class MenuManager{
 		if(musicManager == null) {
 			musicManager = new MusicManager(a); //musicManager가 널일 때 뉴 생성자를 하라고 처리해줌
 		}
+		
+		WindowFrame frame = new WindowFrame(musicManager);
 		selectMenu(a, musicManager);
 		putObject(musicManager, "musicmanager.ser");
 	}

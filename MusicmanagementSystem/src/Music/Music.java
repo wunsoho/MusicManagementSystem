@@ -52,7 +52,7 @@ public abstract class Music implements MusicInput, Serializable{
 		this.musictitle = musictitle;
 	}
 	
-	public String getSongwtiter() {
+	public String getSongwriter() {
 		return songwriter;
 	}
 	
