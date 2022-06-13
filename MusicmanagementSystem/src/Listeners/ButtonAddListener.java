@@ -19,9 +19,10 @@ public class ButtonAddListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton b = (JButton) e.getSource();
-	    MusicAdder adder = frame.getMusicadder(); // JFrame을 상속받은 MusicAdder가 여기 오게 됨.
-	    frame.setupPanel(adder);
+		frame.getContentPane().removeAll();
+	    frame.getContentPane().add(frame.getMusicadder());
+	    frame.revalidate();
+	    frame.repaint();
 	}
 
 }

@@ -87,16 +87,13 @@ public class MenuManager{
 			in.close();
 			file.close();
 		} catch (FileNotFoundException e) {
-			return musicManager; //널 값을 리턴하도록 해서 처리해줌
+			return musicManager;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return musicManager; // getObject이므로 리턴되어줘야 함
+		return musicManager; 
 		
 	}
 	

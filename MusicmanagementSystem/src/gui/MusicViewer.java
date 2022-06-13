@@ -12,12 +12,41 @@ import javax.swing.table.TableColumn;
 import Manager.MusicManager;
 import Music.MusicInput;
 
-public class MusicViewer extends JPanel { // 한 단계 낮춰 JPanel을 extends하도록 함.
+public class MusicViewer extends JPanel {
 	
 	WindowFrame frame;
 	
-	MusicManager musicManager; // MusicViewer에 MusicManager 정보가 추가되어져야 함.
+	MusicManager musicManager; 
 	
+	public MusicManager getMusicManager() {
+		return musicManager;
+	}
+
+	public void setMusicManager(MusicManager musicManager) {
+		this.musicManager = musicManager;
+		this.removeAll();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("title");
+		model.addColumn("time");
+		model.addColumn("writer");
+		
+		for (int i=0; i< musicManager.size(); i++) {
+			Vector row = new Vector();
+			MusicInput mi= musicManager.get(i);
+			row.add(mi.getMusictitle());
+			row.add(mi.getSongwriter());
+			row.add(mi.getMusictime()); 
+			model.addRow(row); 
+		}
+		
+		
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		
+		this.add(sp);
+	}
+
 	public MusicViewer(WindowFrame frame, MusicManager musicManager) {
 		this.frame = frame;
 		this.musicManager = musicManager;
@@ -34,16 +63,15 @@ public class MusicViewer extends JPanel { // 한 단계 낮춰 JPanel을 extends하도록
 			MusicInput mi= musicManager.get(i);
 			row.add(mi.getMusictitle());
 			row.add(mi.getSongwriter());
-			row.add(mi.getMusictime()); // row에다가 각각의 셀을 추가해줌.
-			model.addRow(row); // model에 row를 추가시킴.
-		} // musicManager의 사이즈보다	 작을 때까지 row를 추가시켜주는 작업
+			row.add(mi.getMusictime()); 
+			model.addRow(row); 
+		}
 		
 		
 		JTable table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-		
 	}
 
 }

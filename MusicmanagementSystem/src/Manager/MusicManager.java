@@ -25,6 +25,21 @@ public class MusicManager implements Serializable {
 		this.a = a;
 	}
 	
+	public void setScanner(Scanner a) {
+		this.a = a;
+	}
+	
+	public void addMusic(String title, String time, String writer) {
+		MusicInput musicInput = new BalladMusic(MusicKind.Ballad);
+		musicInput.getUserInput(a); 
+		musics.add(musicInput);
+	}
+	
+	public void addMusic(MusicInput musicInput) {
+		musics.add(musicInput);
+	}
+	
+	
 	public void addmusic() {
 		int kind = 0;
 		MusicInput musicInput;
@@ -40,7 +55,7 @@ public class MusicManager implements Serializable {
 					musicInput = new trotMusic(MusicKind.trot);
 					musicInput.getUserInput(a);
 					musics.add(musicInput);
-					break;
+					break;	
 				}
 				else if (kind == 2) {
 					musicInput = new BalladMusic(MusicKind.Ballad);

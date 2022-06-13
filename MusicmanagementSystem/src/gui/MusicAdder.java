@@ -7,13 +7,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import Listeners.MusicAdderCancelListener;
+import Listeners.MusicAdderListener;
+import Manager.MusicManager;
+
 public class MusicAdder extends JPanel { // «— ¥‹∞Ë ≥∑√Á JPanel¿ª extends«œµµ∑œ «‘.
 	
 	WindowFrame frame;
 	
-	public MusicAdder(WindowFrame frame) {
+	MusicManager musicManager;
+	
+	public MusicAdder(WindowFrame frame, MusicManager musicManager) {
 		this.frame = frame;
-		
+		this.musicManager = musicManager;
+		 
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -31,12 +38,20 @@ public class MusicAdder extends JPanel { // «— ¥‹∞Ë ≥∑√Á JPanel¿ª extends«œµµ∑œ 
 		
 		JLabel labelwriter = new JLabel("writer: ", JLabel.TRAILING); 
 		JTextField fieldwriter = new JTextField(10); 
-		labelwriter.setLabelFor(fieldwriter); // . 
+		labelwriter.setLabelFor(fieldwriter); 
+		
+		JButton saveButton =  new JButton("save");
+		saveButton.addActionListener(new MusicAdderListener(fieldtitle, fieldtime, fieldwriter, musicManager)); 
+		// saveButtonø° MusicAdderListener∏¶ ≥÷æÓ¡‹ . 
+		 	
+		JButton cancleButton =  new JButton("cancle");
+		cancleButton.addActionListener(new MusicAdderCancelListener(frame));
+		
 		panel.add(labelwriter); 
 		panel.add(fieldwriter); 
 		
-		panel.add(new JButton("save")); 
-		panel.add(new JButton("cancel")); 
+		panel.add(saveButton); 
+		panel.add(cancleButton); 
 		
 		SpringUtilities.makeCompactGrid(panel, 4, 2, 6, 6, 6, 6); 
 		

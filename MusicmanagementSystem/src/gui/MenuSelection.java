@@ -1,4 +1,4 @@
-package gui;
+	package gui;
 
 import java.awt.BorderLayout;
 
@@ -8,16 +8,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Listeners.ButtonAddListener;
-import Listeners.ButtonViewListener;
+import Listeners.ButtonViewerListener;
 
 public class MenuSelection extends JPanel { 
 	
-	WindowFrame frame; // menuselection클래스가 WindowFrame을 가지고 있게 함. 
+	WindowFrame frame; 
 	
 	public MenuSelection(WindowFrame frame) {
 		this.frame = frame;
 		
-		this.setLayout(new BorderLayout()); // 원래 FlowLayout인 JPanel을 BorderLayout으로 바꿔줌.
+		this.setLayout(new BorderLayout());
 		
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel(); 
@@ -29,8 +29,8 @@ public class MenuSelection extends JPanel {
 		JButton button4 = new JButton("Delete music");
 		JButton button5 = new JButton("Exit Program"); 
 		
-		button1.addActionListener(new ButtonAddListener(frame)); // add하기전에 ActionListener를 넣어 ButtonAddListener와 연결해줌.
-		button2.addActionListener(new ButtonViewListener(frame)); //add하기전에 ActionListener를 넣어 ButtonViewListener와 연결해줌.
+		button1.addActionListener(new ButtonAddListener(frame)); 
+		button2.addActionListener(new ButtonViewerListener(frame)); 
 		
 		panel1.add(label);
 		panel2.add(button1);

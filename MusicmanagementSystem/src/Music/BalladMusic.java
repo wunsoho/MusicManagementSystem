@@ -13,7 +13,7 @@ public class BalladMusic extends RnBMusic { // Student에서 implements했으므로 지
 		setMusictitle(a);	
 		setSongwriter(a);
 		setSongwriterwithYN(a);
-		setMusictime(a); //this를 이용하여 간단화 함
+		setMusictime(a); 
 	}
 }
 
